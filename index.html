@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+b<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -278,23 +278,33 @@
                 }
             }
             if (active === ' Làm việc ở nhà ( làm việc online)') {
+                audio1.play();
+                document.getElementById("btn_iosdd").style.backgroundColor = "yellow";
+                setTimeout(canhbaodung,300);
+                function canhbaodung(){
 
                 alert("Đúng rồi, làm đơn này nhé")
                 alert(" Các bạn nhân viên khi tạo đơn check in/out sai địa điểm cần chọn đúng loại lý do là làm việc online, nếu không đơn sẽ không hợp lệ. Và các bạn quản lý mà duyệt đơn check in/out sai địa điểm mà chọn không đúng loại lý do  là bị phạt lỗi duyệt sai đơn nè, phạt 300.000/ đơn nhé. ");
 
-            }
+            }}
 
             if (active === ' Làm việc ở bên ngoài: đi trường, đi sự kiện...' || active === ' Lỗi mạng, lỗi app không check in/out được') {
+                audio1.play();
                 document.getElementById("btn_iosdd").style.backgroundColor = "yellow";
+                setTimeout(canhbaodung,300)
+                function canhbaodung(){
                 alert("Đúng rồi , làm đơn này nhé");
                 alert(`Bạn ơi hãy nhớ, đơn check in ngoài địa điểm chỉ áp dụng cho 3 trường hợp\n 1. Làm việc ở bên ngoài văn phòng/ cơ sở: ví dụ như đi trường, đi sự kiện...\n 2. Làm việc ở nhà\n 3. Lỗi mang, lỗi vị trí: Ví dụ như đến văn phòng/cơ sở rồi mà app chấm công không bắt được địa chỉ văn phòng/ cơ sở\n Trường hợp app bị lỗi không bắt được vị trí các bạn cứ tải lại app khoảng 2,3 lần là bắt được vị trí\n Nên là khi ${active } bạn dùng đơn check in/out sai địa điểm là ĐÚNG rồi nha`)
 
-            }
+            }}
             if (active !== ' Xin đi muộn' && active !== ' Làm việc ở bên ngoài: đi trường, đi sự kiện...' && active !== ' Làm việc ở nhà ( làm việc online)' && active !== ' Lỗi mạng, lỗi app không check in/out được' && active !== ' Xin về sớm') {
+                audio2.play();
+                setTimeout(canhbaosai,600);
+                function canhbaosai(){
                 alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn  check in sai địa điểm`);
                 alert(`Bạn ơi hãy nhớ, đơn check in/out ngoài địa điểm chỉ áp dụng cho 3 trường hợp\n 1. Làm việc ở bên ngoài văn phòng/ cơ sở: ví dụ như đi trường, đi sự kiện...\n 2. Làm việc ở nhà\n 3. Lỗi mang, lỗi vị trí: Ví dụ như đến văn phòng/cơ sở rồi mà app chấm công không bắt được địa chỉ văn phòng/ cơ sở\n Trường hợp app bị lỗi không bắt được vị trí các bạn cứ tải lại app khoảng 2,3 lần là bắt được vị trí.\n Nên là khi ${active } bạn dùng đơn check in/out sai địa điểm là SAI rồi nha`)
 
-            }
+                }}
 
 
         }
