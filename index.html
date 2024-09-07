@@ -131,6 +131,7 @@
             <input type="button" id="btn_ndnv" value="Ngày đầu nhận việc" />
             <input type="button" id="btn_dmvs" value="Đi muộn + về sớm" />
             <input type="button" id="btn_dmqco" value="Đi muộn + quên check out" />
+             <input type="button" id="btn_lvtn" value="Xin làm online" />
         </div>
 
     </div>
@@ -417,6 +418,26 @@
             }
 
         }
+        var button9 = document.getElementById("btn_lvtn");
+        button8.onclick = function() {
+
+            var active = document.querySelector("div.THdisplay").textContent;
+            if (active === ' Làm việc ở nhà ( làm việc online)') {
+                audio1.play();
+                document.getElementById("btn_dmqco").style.backgroundColor = "#43e8e4";
+                img1.innerHTML = '<h5 style = "color: blue;"> <i style = "color : #F7444E;" class="fas fa-smile fa-spin"></i> Đúng rồi, bạn dùng đơn này nhé</h1> <img src="./HD lam viec tai nha.png"> ';
+                // setTimeout('alert(" Đúng rồi , làm đơn này nhé. Lưu ý đơn này chỉ được tạo một lần vào ngày đầu nhận việc thôi nhé. Ngày đầu nhận việc bạn cần kiểm tra lịch làm việc của bạn cho các ngày tiếp theo đã được set đúng chưa, nếu chưa cần báo quản lý/ Ban HR set lại lịch cho chính xác.")', 1000);
+            } else {
+                audio2.play();
+                setTimeout(canhbaosai, 400);
+                //setTimeout('alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn ngày đầu nhận việc`)', 400);
+                function canhbaosai() {
+                    alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn xin làm online\n Hãy làm đơn ${active} cho trường hợp này\n Nhấn vào nút ${active} để xem hướng dẫn chi tiết khi tạo đơn `);
+
+                }
+            }
+
+        }
 
 
         var start = document.getElementById("start");
@@ -549,6 +570,17 @@
             var TH_item = document.querySelector(".TH");
             TH[9].style.display = "block";
             TH[9].classList.add("THdisplay");
+            solution.style.display = "block";
+
+
+        }
+        function myFunction10() {
+            TH.forEach(function(item) {
+                item.style.display = "none";
+            });
+            var TH_item = document.querySelector(".TH");
+            TH[10].style.display = "block";
+            TH[10].classList.add("THdisplay");
             solution.style.display = "block";
 
 
