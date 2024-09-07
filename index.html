@@ -150,6 +150,7 @@ b<!DOCTYPE html>
         var button1 = document.getElementById("btn_xdm");
         button1.onclick = function() {
             var active = document.querySelector("div.THdisplay").textContent;
+             var img1 = document.getElementById("hdxdm");
             if (active === ' Xin đi muộn') {
                 audio1.play();
                 document.getElementById("btn_xdm").style.backgroundColor = "yellow";
