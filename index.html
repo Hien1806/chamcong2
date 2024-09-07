@@ -1,4 +1,4 @@
-b<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,6 +11,7 @@ b<!DOCTYPE html>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" integrity="sha512-Oy+sz5W86PK0ZIkawrG0iv7XwWhYecM3exvUtMKNJMekGFJtVAhibhRPTpmyTj8+lJCkmWfnpxKgT2OopquBHA==" crossorigin="anonymous"
         referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
     <style>
         table .bi-check-circle-fill {
@@ -41,13 +42,13 @@ b<!DOCTYPE html>
             background-color: blue;
         }
         
-        h3 {
+        h5 {
             color: blue;
         }
         
         marquee {
             color: red;
-            font-size: 30px;
+            font-size: 20px;
         }
         
         #solution {
@@ -55,47 +56,54 @@ b<!DOCTYPE html>
         }
         
         .chan {
-            background-color: rgb(255, 225, 205);
+            background-color: #FF92A9;
         }
         
         .le {
-            background-color: lightgreen;
+            background-color: #FFD361;
         }
         
         audio {
             display: hidden;
         }
         
-        #noidung {
-            margin-left: 50px;
-        }
-        
-        #thanhdieuhuong {
-            margin-left: 50px;
-        }
-        
         #hdxdm {
-            margin-left: 50px;
             margin-top: 15px;
+        }
+        
+        #noidung button {
+            margin-left: 3px;
+            border-radius: 50rem;
+        }
+        
+        #solution input {
+            margin-left: 3px;
+            border-radius: 5rem;
+        }
+        
+        body {
+            margin-left: 50px;
+            margin-top: 10px;
         }
     </style>
     <link rel="stylesheet" href="./style.css">
+
 </head>
 
 <body>
     <div>
         <img src="./Logo Imap.png">
-        <h3>Xin chao cac Imaper,</h3>
+        <h5>Xin chao cac Imaper,</h5>
     </div>
 
 
-    <marquee width="50%"> Hôm nay chúng mình demo các bước khi chấm công nhé</marquee>
+    <marquee width="30%" scrollamount=”10000″> Hôm nay chúng mình demo các bước khi chấm công nhé</marquee>
     <audio id="amthanhsai" src="./incorrect-buzzer-sound-147336.mp3"></audio>
     <audio id="amthanhdung" src="./level-up-2-199574.mp3"></audio>
     <div id="thanhdieuhuong">
         <div>Nào cùng bắt đầu thôi</div>
-        <button id="start">Start</button>
-        <button id="start1">Start</button>
+        <button id="start" style="display: none;">Start</button>
+        <button id="start1" style="display: none;">Start</button>
         <button id="start2" onclick="nutback()">Back</button>
     </div>
     <div id="noidung">
@@ -109,6 +117,8 @@ b<!DOCTYPE html>
             <div class="TH "> <button class="le" onclick="myFunction5()">Làm việc ở nhà ( làm việc online)</button></div>
             <div class="TH "> <button class="chan" onclick="myFunction6()">Lỗi mạng, lỗi app không check in/out được</button></div>
             <div class="TH "> <button class="le" onclick="myFunction7()">Ngày đầu tiên nhận việc</button></div>
+            <div class="TH "> <button class="chan" onclick="myFunction8()">Vừa đi muộn + về sớm trong 1 ngày</button></div>
+            <div class="TH "> <button class="le" onclick="myFunction9()">Vừa đi muộn + quên check out trong 1 ngày</button></div>
         </div>
 
         <div id="solution">
@@ -119,15 +129,30 @@ b<!DOCTYPE html>
             <input type="button" id="btn_xvs" value="Xin về sớm" />
             <input type="button" id="btn_iosdd" value="Check in/out sai địa điểm" />
             <input type="button" id="btn_ndnv" value="Ngày đầu nhận việc" />
+            <input type="button" id="btn_dmvs" value="Đi muộn + về sớm" />
+            <input type="button" id="btn_dmqco" value="Đi muộn + quên check out" />
         </div>
 
     </div>
 
-
-
-<div id="hdxdm">
+    <div id="hdxdm">
 
     </div>
+    <div id="hdxvs">
+
+    </div>
+    <div id="hdqci">
+
+    </div>
+    <div id="hdqco">
+
+    </div>
+    <div id="hdiosdd">
+
+    </div>
+
+
+
 
 
     </div>
@@ -148,50 +173,57 @@ b<!DOCTYPE html>
         var audio2 = document.getElementById("amthanhsai");
 
         var button1 = document.getElementById("btn_xdm");
+        var img1 = document.getElementById("hdxdm");
         button1.onclick = function() {
             var active = document.querySelector("div.THdisplay").textContent;
-             var img1 = document.getElementById("hdxdm");
             if (active === ' Xin đi muộn') {
                 audio1.play();
-                document.getElementById("btn_xdm").style.backgroundColor = "yellow";
+                document.getElementById("btn_xdm").style.backgroundColor = "#43e8e4";
                 setTimeout(canhbaodung, 300);
 
                 function canhbaodung() {
 
-                    alert("Đúng rồi , làm đơn này nhé");
-                    img1.innerHTML = '<img src="./HD XIN DI MUON.png">';
+                    //alert(" &#10084 Đúng rồi , làm đơn này nhé");
+                    //img1.innerHTML = '<i class="fa-duotone fa-solid fa-face-smile-hearts"></i>';
+
                     //alert("Bạn phải cập nhật lại giờ check in theo giờ vào tiêu chuẩn để KHÔNG BỊ tính phạt đi muộn nhé");
-                   // alert("Trong tháng tối đa làm được hai đơn xin đi muộn/về sớm\n Trường hợp bạn đi muộn mà không làm đơn xin đi muộn/hoặc đơn xin đi muộn không được quản lý duyệt/ hoặc số đơn đi muộn, về sớm vượt quá 2 đơn/tháng\n Mức phạt sẽ là 3.000/ phút * số phút đi muộn và tối đa không quá 200.000/ngày ; số phút đi muộn = thời gian check in thực tế - thời gian in tiêu chuẩn)");
+                    //alert("Trong tháng tối đa làm được hai đơn xin đi muộn/về sớm\n Trường hợp bạn đi muộn mà không làm đơn xin đi muộn/hoặc đơn xin đi muộn không được quản lý duyệt/ hoặc số đơn đi muộn, về sớm vượt quá 2 đơn/tháng\n Mức phạt sẽ là 3.000/ phút * số phút đi muộn và tối đa không quá 200.000/ngày ; số phút đi muộn = thời gian check in thực tế - thời gian in tiêu chuẩn)");
+                    img1.innerHTML = '<h5 style = "color: blue;"> <i style = "color : #F7444E;" class="fas fa-smile fa-spin"></i> Đúng rồi, bạn dùng đơn này nhé</h1> <img src="./HD XIN DI MUON.png"> ';
+
+
                 }
             } else {
                 audio2.play();
                 setTimeout(canhbaosai, 600);
-                
+
 
                 function canhbaosai() {
-                    alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn  xin di muộn`);
+                    alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn  xin đi muộn`);
                 }
             }
 
 
         }
         var button2 = document.getElementById("btn_xvs");
+
         button2.onclick = function() {
             var active = document.querySelector("div.THdisplay").textContent;
             if (active === ' Xin về sớm') {
                 audio1.play();
-                document.getElementById("btn_xvs").style.backgroundColor = "yellow";
+                document.getElementById("btn_xvs").style.backgroundColor = "#43e8e4";
                 setTimeout(canhbaodung, 300);
 
                 function canhbaodung() {
-                    alert("Đúng rồi , làm đơn này nhé");
-                    alert("Bạn phải cập nhật lại giờ check out theo giờ ra tiêu chuẩn để KHÔNG BỊ tính phạt về sớm nhé");
-                    alert("Trong tháng tối đa làm được hai đơn xin đi muộn/về sớm\n Trường hợp bạn đi muộn mà không làm đơn xin đi muộn/hoặc đơn xin đi muộn không được quản lý duyệt/ hoặc số đơn đi muộn, về sớm vượt quá 2 đơn/tháng\n Mức phạt sẽ là 3.000/ phút * số phút về sớm và tối đa không quá 200.000/ngày ; số phút về sớm = giờ check out tiêu chuẩn  - thời gian check out thực tế)");
+                    img1.innerHTML = '<h5 style = "color: blue;"> <i style = "color : #F7444E;" class="fas fa-smile fa-spin"></i> Đúng rồi, bạn dùng đơn này nhé</h1> <img src="./HD xin ve som.png"> ';
+
+                    //alert("Đúng rồi , làm đơn này nhé");
+                    //alert("Bạn phải cập nhật lại giờ check out theo giờ ra tiêu chuẩn để KHÔNG BỊ tính phạt về sớm nhé");
+                    //alert("Trong tháng tối đa làm được hai đơn xin đi muộn/về sớm\n Trường hợp bạn đi muộn mà không làm đơn xin đi muộn/hoặc đơn xin đi muộn không được quản lý duyệt/ hoặc số đơn đi muộn, về sớm vượt quá 2 đơn/tháng\n Mức phạt sẽ là 3.000/ phút * số phút về sớm và tối đa không quá 200.000/ngày ; số phút về sớm = giờ check out tiêu chuẩn  - thời gian check out thực tế)");
                 }
             } else {
                 audio2.play();
                 setTimeout(canhbaosai, 600);
-                b
+
 
                 function canhbaosai() {
 
@@ -203,6 +235,7 @@ b<!DOCTYPE html>
         }
         var button3 = document.getElementById("btn_qci");
 
+
         button3.onclick = function() {
             var active = document.querySelector("div.THdisplay").textContent;
 
@@ -211,16 +244,17 @@ b<!DOCTYPE html>
 
                 audio1.play();
 
-                document.getElementById("btn_qci").style.backgroundColor = "yellow";
+                document.getElementById("btn_qci").style.backgroundColor = "#43e8e4";
 
                 function canhbaodung() {
-                    alert("Đúng rồi, làm đơn này nhé");
-                    alert("Và cập nhật lại giờ check in theo giờ thực tế bạn đến văn phòng; cập nhật lại giờ check out thực tế bạn rời văn phòng nhé");
-                    let inbandau = prompt(" Thử 1 ví dụ nhé\nHãy nhập giờ check in thực tế của bạn ( là giờ bạn có mặt ở văn phòng)");
-                    alert("Như vậy, lúc làm đơn quên check in, sẽ phải cập nhật lại giờ check in là " + inbandau);
-                    let outbandau = prompt(" Hãy nhập giờ check out thực tế của bạn ( là giờ bạn có mặt ở văn phòng)");
-                    alert("Như vậy, lúc làm đơn quên check in, sẽ phải cập nhật lại giờ check out là " + outbandau);
-                    alert("Bạn phải đính kèm hai ảnh, một ảnh hiển thị lúc bạn vào và một ảnh hiển thị lúc bạn rời văn phòng\n Các ảnh này đều phải lấy từ dữ liệu camera mới thể hiện được chính xác ngày giờ\n Nếu đính kèm hỉnh ảnh không hợp lệ, quản lý sẽ phải từ chối đơn hoặc nếu qly duyệt đơn sẽ phạt quản lý 300.000")
+                    img1.innerHTML = '<h5 style = "color: blue;"> <i style = "color : #F7444E;" class="fas fa-smile fa-spin"></i> Đúng rồi, bạn dùng đơn này nhé</h1> <img src="./HD quen check in.png"> ';
+                    //alert("Đúng rồi, làm đơn này nhé");
+                    //alert("Và cập nhật lại giờ check in theo giờ thực tế bạn đến văn phòng; cập nhật lại giờ check out thực tế bạn rời văn phòng nhé");
+                    //let inbandau = prompt(" Thử 1 ví dụ nhé\nHãy nhập giờ check in thực tế của bạn ( là giờ bạn có mặt ở văn phòng)");
+                    // alert("Như vậy, lúc làm đơn quên check in, sẽ phải cập nhật lại giờ check in là " + inbandau);
+                    //let outbandau = prompt(" Hãy nhập giờ check out thực tế của bạn ( là giờ bạn có mặt ở văn phòng)");
+                    //alert("Như vậy, lúc làm đơn quên check in, sẽ phải cập nhật lại giờ check out là " + outbandau);
+                    //alert("Bạn phải đính kèm hai ảnh, một ảnh hiển thị lúc bạn vào và một ảnh hiển thị lúc bạn rời văn phòng\n Các ảnh này đều phải lấy từ dữ liệu camera mới thể hiện được chính xác ngày giờ\n Nếu đính kèm hỉnh ảnh không hợp lệ, quản lý sẽ phải từ chối đơn hoặc nếu qly duyệt đơn sẽ phạt quản lý 300.000")
                 }
                 setTimeout(canhbaodung, 300);
                 // let inclaim = prompt(" Như vậy, lúc làm đơn quên check in, sẽ phải cập nhật lại giờ check in là");
@@ -232,7 +266,7 @@ b<!DOCTYPE html>
                 function canhbao1() {
                     alert(`Sai rồi nè, ${active} KHÔNG ĐƯỢC làm đơn quên check in !`);
                 }
-                setTimeout(canhbao1, 600);
+                setTimeout(canhbao1, 400);
             }
         }
         var button4 = document.getElementById("btn_qco");
@@ -241,20 +275,21 @@ b<!DOCTYPE html>
             if (active === ' Quên check out') {
                 audio1.play();
 
-                document.getElementById("btn_qco").style.backgroundColor = "yellow";
+                document.getElementById("btn_qco").style.backgroundColor = "#43e8e4";
 
                 function canhbaodung() {
-                    alert("Đúng rồi , làm đơn này nhé");
-                    alert("Và cập nhật lại giờ check out theo giờ thực tế bạn rời văn phòng");
-                    let outbandau = prompt(" Thử 1 ví dụ nhé\nHãy nhập giờ check out thực tế của bạn ( là giờ bạn rời văn phòng)");
-                    alert("Như vậy, lúc làm đơn quên check out, sẽ phải cập nhật lại giờ check out là " + outbandau);
-                    alert("Bạn phải đính kèm  ảnh hiển thị lúc bạn rời văn phòng\n  Ảnh này đều phải lấy từ dữ liệu camera mới thể hiện được chính xác ngày giờ\n Nếu đính kèm hỉnh ảnh không hợp lệ, quản lý sẽ phải từ chối đơn hoặc nếu qly duyệt đơn sẽ phạt quản lý 300.000/đơn duyệt sai")
+                    img1.innerHTML = '<h5 style = "color: blue;"> <i style = "color : #F7444E;" class="fas fa-smile fa-spin"></i> Đúng rồi, bạn dùng đơn này nhé</h1> <img src="./HD quen check out.png"> ';
+                    //alert("Đúng rồi , làm đơn này nhé");
+                    //alert("Và cập nhật lại giờ check out theo giờ thực tế bạn rời văn phòng");
+                    //let outbandau = prompt(" Thử 1 ví dụ nhé\nHãy nhập giờ check out thực tế của bạn ( là giờ bạn rời văn phòng)");
+                    //alert("Như vậy, lúc làm đơn quên check out, sẽ phải cập nhật lại giờ check out là " + outbandau);
+                    //alert("Bạn phải đính kèm  ảnh hiển thị lúc bạn rời văn phòng\n  Ảnh này đều phải lấy từ dữ liệu camera mới thể hiện được chính xác ngày giờ\n Nếu đính kèm hỉnh ảnh không hợp lệ, quản lý sẽ phải từ chối đơn hoặc nếu qly duyệt đơn sẽ phạt quản lý 300.000/đơn duyệt sai")
 
                 }
                 setTimeout(canhbaodung, 300);
             } else {
                 audio2.play();
-                setTimeout(canhbaosai, 600);
+                setTimeout(canhbaosai, 400);
 
                 function canhbaosai() {
 
@@ -264,6 +299,7 @@ b<!DOCTYPE html>
         }
 
         var button5 = document.getElementById("btn_iosdd");
+
         button5.onclick = function() {
             var active = document.querySelector("div.THdisplay").textContent;
             if (active === ' Xin đi muộn') {
@@ -271,49 +307,53 @@ b<!DOCTYPE html>
                 setTimeout(canhbaosai, 400);
 
                 function canhbaosai() {
-                    alert("Sai rồi nhé, trường hợp xin đi muộn tuyệt đối không được làm đơn check in sai địa điểm nhé mọi người")
+                    alert("Sai rồi nhé, trường hợp xin đi muộn tuyệt đối KHÔNG ĐƯỢC làm đơn check in sai địa điểm nhé mọi người\n Cái này sai hoàn toàn nhé, đây được xếp vào hình thức cheating khi đi muộn đó nhé. Và các bạn quản lý mà duyệt đơn này là bị phạt lỗi duyệt sai đơn nè, phạt 300.000/ đơn nhé ")
 
-                    alert("bbbCái này sai hoàn toàn nhé, đây được xếp vào hình thức cheating khi đi muộn đó nhé. Và các bạn quản lý mà duyệt đơn này là bị phạt lỗi duyệt sai đơn nè, phạt 300.000/ đơn nhé. đơn check in/out sai địa điểm chỉ sử dụng trong 3 TH: Lỗi vị trí, làm việc onl, làm việc ngoài vp như đi trường , đi sự kiện ");
+                    //alert("bbbCái này sai hoàn toàn nhé, đây được xếp vào hình thức cheating khi đi muộn đó nhé. Và các bạn quản lý mà duyệt đơn này là bị phạt lỗi duyệt sai đơn nè, phạt 300.000/ đơn nhé. đơn check in/out sai địa điểm chỉ sử dụng trong 3 TH: Lỗi vị trí, làm việc onl, làm việc ngoài vp như đi trường , đi sự kiện ");
                 }
             }
             if (active === ' Xin về sớm') {
                 audio2.play();
-                setTimeout(canhbaosai, 600);
+                setTimeout(canhbaosai, 400);
 
                 function canhbaosai() {
-                    alert("Sai rồi nhé, trường hợp xin về sớm tuyệt đối KHÔNG ĐƯỢC làm đơn check out sai địa điểm nhé mọi người")
-                    alert(" Cái này sai hoàn toàn nhé, đây được xếp vào hình thức cheating khi về sớm đó nhé. Và các bạn quản lý mà duyệt đơn này là bị phạt lỗi duyệt sai đơn nè, phạt 300.000/ đơn nhé. Đơn check in/out sai địa điểm chỉ sử dụng trong 3 TH: Lỗi vị trí, làm việc onl, làm việc ngoài vp như đi trường , đi sự kiện ");
+                    alert("Sai rồi nhé, trường hợp xin về sớm tuyệt đối KHÔNG ĐƯỢC làm đơn check out sai địa điểm nhé mọi người\n Cái này sai hoàn toàn nhé, đây được xếp vào hình thức cheating khi đi muộn đó nhé. Và các bạn quản lý mà duyệt đơn này là bị phạt lỗi duyệt sai đơn nè, phạt 300.000/ đơn nhé")
+                        // alert(" Cái này sai hoàn toàn nhé, đây được xếp vào hình thức cheating khi về sớm đó nhé. Và các bạn quản lý mà duyệt đơn này là bị phạt lỗi duyệt sai đơn nè, phạt 300.000/ đơn nhé. Đơn check in/out sai địa điểm chỉ sử dụng trong 3 TH: Lỗi vị trí, làm việc onl, làm việc ngoài vp như đi trường , đi sự kiện ");
 
                 }
             }
             if (active === ' Làm việc ở nhà ( làm việc online)') {
-                audio1.play();
-                document.getElementById("btn_iosdd").style.backgroundColor = "yellow";
-                setTimeout(canhbaodung,300);
-                function canhbaodung(){
+                audio2.play();
+                setTimeout(canhbaosai, 400);
 
-                alert("Đúng rồi, làm đơn này nhé")
-                alert(" Các bạn nhân viên khi tạo đơn check in/out sai địa điểm cần chọn đúng loại lý do là làm việc online, nếu không đơn sẽ không hợp lệ. Và các bạn quản lý mà duyệt đơn check in/out sai địa điểm mà chọn không đúng loại lý do  là bị phạt lỗi duyệt sai đơn nè, phạt 300.000/ đơn nhé. ");
+                function canhbaosai() {
+                    alert("Sai rồi nhé, theo quy định mới thì khi làm onl không dùng đơn check in/ out sai địa điểm nữa\n Cần phải tạo đơn xin làm online, QLTT duyệt đơn xong thì các bạn ở nhà check in out như bình thường")
+                }
 
-            }}
+                //alert("Đúng rồi, làm đơn này nhé")
+                // alert(" Các bạn nhân viên khi tạo đơn check in/out sai địa điểm cần chọn đúng loại lý do là làm việc online, nếu không đơn sẽ không hợp lệ. Và các bạn quản lý mà duyệt đơn check in/out sai địa điểm mà chọn không đúng loại lý do  là bị phạt lỗi duyệt sai đơn nè, phạt 300.000/ đơn nhé. ");
+
+            }
 
             if (active === ' Làm việc ở bên ngoài: đi trường, đi sự kiện...' || active === ' Lỗi mạng, lỗi app không check in/out được') {
                 audio1.play();
-                document.getElementById("btn_iosdd").style.backgroundColor = "yellow";
-                setTimeout(canhbaodung,300)
-                function canhbaodung(){
-                alert("Đúng rồi , làm đơn này nhé");
-                alert(`Bạn ơi hãy nhớ, đơn check in ngoài địa điểm chỉ áp dụng cho 3 trường hợp\n 1. Làm việc ở bên ngoài văn phòng/ cơ sở: ví dụ như đi trường, đi sự kiện...\n 2. Làm việc ở nhà\n 3. Lỗi mang, lỗi vị trí: Ví dụ như đến văn phòng/cơ sở rồi mà app chấm công không bắt được địa chỉ văn phòng/ cơ sở\n Trường hợp app bị lỗi không bắt được vị trí các bạn cứ tải lại app khoảng 2,3 lần là bắt được vị trí\n Nên là khi ${active } bạn dùng đơn check in/out sai địa điểm là ĐÚNG rồi nha`)
+                //document.getElementById("btn_xdm").style.backgroundColor = "#43e8e4";
+                document.getElementById("btn_iosdd").style.backgroundColor = "#43e8e4";
+                img1.innerHTML = '<h5 style = "color: blue;"> <i style = "color : #F7444E;" class="fas fa-smile fa-spin"></i> Đúng rồi, bạn dùng đơn này nhé</h1> <img src="./HD in out sai dia diem.png"> ';
+                //alert("Đúng rồi, làm đơn này nhé");
+                //alert(`Bạn ơi hãy nhớ, đơn check in ngoài địa điểm chỉ áp dụng cho 3 trường hợp\n 1. Làm việc ở bên ngoài văn phòng/ cơ sở: ví dụ như đi trường, đi sự kiện...\n 2. Làm việc ở nhà\n 3. Lỗi mang, lỗi vị trí: Ví dụ như đến văn phòng/cơ sở rồi mà app chấm công không bắt được địa chỉ văn phòng/ cơ sở\n Trường hợp app bị lỗi không bắt được vị trí các bạn cứ tải lại app khoảng 2,3 lần là bắt được vị trí\n Nên là khi ${active } bạn dùng đơn check in/out sai địa điểm là ĐÚNG rồi nha`)
 
-            }}
+            }
             if (active !== ' Xin đi muộn' && active !== ' Làm việc ở bên ngoài: đi trường, đi sự kiện...' && active !== ' Làm việc ở nhà ( làm việc online)' && active !== ' Lỗi mạng, lỗi app không check in/out được' && active !== ' Xin về sớm') {
                 audio2.play();
-                setTimeout(canhbaosai,600);
-                function canhbaosai(){
-                alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn  check in sai địa điểm`);
-                alert(`Bạn ơi hãy nhớ, đơn check in/out ngoài địa điểm chỉ áp dụng cho 3 trường hợp\n 1. Làm việc ở bên ngoài văn phòng/ cơ sở: ví dụ như đi trường, đi sự kiện...\n 2. Làm việc ở nhà\n 3. Lỗi mang, lỗi vị trí: Ví dụ như đến văn phòng/cơ sở rồi mà app chấm công không bắt được địa chỉ văn phòng/ cơ sở\n Trường hợp app bị lỗi không bắt được vị trí các bạn cứ tải lại app khoảng 2,3 lần là bắt được vị trí.\n Nên là khi ${active } bạn dùng đơn check in/out sai địa điểm là SAI rồi nha`)
+                setTimeout(canhbaosai, 400);
 
-                }}
+                function canhbaosai() {
+                    alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn  check in/out sai địa điểm\n Hãy làm đơn ${active} cho trường hợp này\n Nhấn vào nút ${active} để xem hướng dẫn chi tiết khi tạo đơn `);
+                    //alert(`Bạn ơi hãy nhớ, đơn check in/out ngoài địa điểm chỉ áp dụng cho 3 trường hợp\n 1. Làm việc ở bên ngoài văn phòng/ cơ sở: ví dụ như đi trường, đi sự kiện...\n 2. Làm việc ở nhà\n 3. Lỗi mang, lỗi vị trí: Ví dụ như đến văn phòng/cơ sở rồi mà app chấm công không bắt được địa chỉ văn phòng/ cơ sở\n Trường hợp app bị lỗi không bắt được vị trí các bạn cứ tải lại app khoảng 2,3 lần là bắt được vị trí.\n Nên là khi ${active } bạn dùng đơn check in/out sai địa điểm là SAI rồi nha`)
+
+                }
+            }
 
 
         }
@@ -323,15 +363,61 @@ b<!DOCTYPE html>
             var active = document.querySelector("div.THdisplay").textContent;
             if (active === ' Ngày đầu tiên nhận việc') {
                 audio1.play();
-                document.getElementById("btn_ndnv").style.backgroundColor = "yellow";
-                setTimeout('alert(" Đúng rồi , làm đơn này nhé. Lưu ý đơn này chỉ được tạo một lần vào ngày đầu nhận việc thôi nhé. Ngày đầu nhận việc bạn cần kiểm tra lịch làm việc của bạn cho các ngày tiếp theo đã được set đúng chưa, nếu chưa cần báo quản lý/ Ban HR set lại lịch cho chính xác.")', 1000);
+                document.getElementById("btn_ndnv").style.backgroundColor = "#43e8e4";
+                img1.innerHTML = '<h5 style = "color: blue;"> <i style = "color : #F7444E;" class="fas fa-smile fa-spin"></i> Đúng rồi, bạn dùng đơn này nhé</h1> <img src="./HD ngay dau nhan viec.png"> ';
+                // setTimeout('alert(" Đúng rồi , làm đơn này nhé. Lưu ý đơn này chỉ được tạo một lần vào ngày đầu nhận việc thôi nhé. Ngày đầu nhận việc bạn cần kiểm tra lịch làm việc của bạn cho các ngày tiếp theo đã được set đúng chưa, nếu chưa cần báo quản lý/ Ban HR set lại lịch cho chính xác.")', 1000);
             } else {
                 audio2.play();
-                setTimeout('alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn ngày đầu nhận việc`)', 600);
+                setTimeout(canhbaosai, 400);
+                //setTimeout('alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn ngày đầu nhận việc`)', 400);
+                function canhbaosai() {
+                    alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn ngày đầu nhận việc\n Hãy làm đơn ${active} cho trường hợp này\n Nhấn vào nút ${active} để xem hướng dẫn chi tiết khi tạo đơn `);
 
+                }
             }
 
         }
+        var button7 = document.getElementById("btn_dmvs");
+        button7.onclick = function() {
+
+            var active = document.querySelector("div.THdisplay").textContent;
+            if (active === ' Vừa đi muộn + về sớm trong 1 ngày') {
+                audio1.play();
+                document.getElementById("btn_ndnv").style.backgroundColor = "#43e8e4";
+                img1.innerHTML = '<h5 style = "color: blue;"> <i style = "color : #F7444E;" class="fas fa-smile fa-spin"></i> Đúng rồi, bạn dùng đơn này nhé</h1> <img src="./HD xin di muon ve.png"> ';
+                // setTimeout('alert(" Đúng rồi , làm đơn này nhé. Lưu ý đơn này chỉ được tạo một lần vào ngày đầu nhận việc thôi nhé. Ngày đầu nhận việc bạn cần kiểm tra lịch làm việc của bạn cho các ngày tiếp theo đã được set đúng chưa, nếu chưa cần báo quản lý/ Ban HR set lại lịch cho chính xác.")', 1000);
+            } else {
+                audio2.play();
+                setTimeout(canhbaosai, 400);
+                //setTimeout('alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn ngày đầu nhận việc`)', 400);
+                function canhbaosai() {
+                    alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn ngày đầu nhận việc\n Hãy làm đơn ${active} cho trường hợp này\n Nhấn vào nút ${active} để xem hướng dẫn chi tiết khi tạo đơn `);
+
+                }
+            }
+
+        }
+        var button8 = document.getElementById("btn_dmqco");
+        button8.onclick = function() {
+
+            var active = document.querySelector("div.THdisplay").textContent;
+            if (active === ' Vừa đi muộn + quên check out trong 1 ngày') {
+                audio1.play();
+                document.getElementById("btn_dmqco").style.backgroundColor = "#43e8e4";
+                img1.innerHTML = '<h5 style = "color: blue;"> <i style = "color : #F7444E;" class="fas fa-smile fa-spin"></i> Đúng rồi, bạn dùng đơn này nhé</h1> <img src="./HD xin di muon quen check out.png"> ';
+                // setTimeout('alert(" Đúng rồi , làm đơn này nhé. Lưu ý đơn này chỉ được tạo một lần vào ngày đầu nhận việc thôi nhé. Ngày đầu nhận việc bạn cần kiểm tra lịch làm việc của bạn cho các ngày tiếp theo đã được set đúng chưa, nếu chưa cần báo quản lý/ Ban HR set lại lịch cho chính xác.")', 1000);
+            } else {
+                audio2.play();
+                setTimeout(canhbaosai, 400);
+                //setTimeout('alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn ngày đầu nhận việc`)', 400);
+                function canhbaosai() {
+                    alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn ngày đầu nhận việc\n Hãy làm đơn ${active} cho trường hợp này\n Nhấn vào nút ${active} để xem hướng dẫn chi tiết khi tạo đơn `);
+
+                }
+            }
+
+        }
+
 
         var start = document.getElementById("start");
         var start1 = document.getElementById("start1");
@@ -439,6 +525,30 @@ b<!DOCTYPE html>
             var TH_item = document.querySelector(".TH");
             TH[7].style.display = "block";
             TH[7].classList.add("THdisplay");
+            solution.style.display = "block";
+
+
+        }
+
+        function myFunction8() {
+            TH.forEach(function(item) {
+                item.style.display = "none";
+            });
+            var TH_item = document.querySelector(".TH");
+            TH[8].style.display = "block";
+            TH[8].classList.add("THdisplay");
+            solution.style.display = "block";
+
+
+        }
+
+        function myFunction9() {
+            TH.forEach(function(item) {
+                item.style.display = "none";
+            });
+            var TH_item = document.querySelector(".TH");
+            TH[9].style.display = "block";
+            TH[9].classList.add("THdisplay");
             solution.style.display = "block";
 
 
