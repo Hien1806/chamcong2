@@ -119,6 +119,7 @@
             <div class="TH "> <button class="le" onclick="myFunction7()">Ngày đầu tiên nhận việc</button></div>
             <div class="TH "> <button class="chan" onclick="myFunction8()">Vừa đi muộn + về sớm trong 1 ngày</button></div>
             <div class="TH "> <button class="le" onclick="myFunction9()">Vừa đi muộn + quên check out trong 1 ngày</button></div>
+             <div class="TH "> <button class="chan" onclick="myFunction10()">Phân công công việc ban HR</button></div>
         </div>
 
         <div id="solution">
@@ -132,6 +133,7 @@
             <input type="button" id="btn_dmvs" value="Đi muộn + về sớm" />
             <input type="button" id="btn_dmqco" value="Đi muộn + quên check out" />
              <input type="button" id="btn_lvtn" value="Xin làm online" />
+             <input type="button" id="btn_pcns" value="Phân công công việc ban HR" />
         </div>
 
     </div>
@@ -438,6 +440,30 @@
             }
 
         }
+        var button10 = document.getElementById("btn_pcns");
+        button10.onclick = function() {
+            var active = document.querySelector("div.THdisplay").textContent;
+             if (active === ' Phân công công việc ban HR') {
+                audio1.play();
+                document.getElementById("btn_lvtn").style.backgroundColor = "#43e8e4";
+                img1.innerHTML = '<h5 style = "color: blue;"> <i style = "color : #F7444E;" class="fas fa-smile fa-spin"></i> Đúng rồi, xem phân công công việc dưới đây để liên hệ đúng nhân sự phụ trách nhé</h1> <img src="./anh phan cong cong viec.png"> ';
+                // setTimeout('alert(" Đúng rồi , làm đơn này nhé. Lưu ý đơn này chỉ được tạo một lần vào ngày đầu nhận việc thôi nhé. Ngày đầu nhận việc bạn cần kiểm tra lịch làm việc của bạn cho các ngày tiếp theo đã được set đúng chưa, nếu chưa cần báo quản lý/ Ban HR set lại lịch cho chính xác.")', 1000);
+            }
+            else {
+                audio2.play();
+                setTimeout(canhbaosai, 400);
+                //setTimeout('alert(` Sai rồi, ${active} KHÔNG ĐƯƠC làm đơn ngày đầu nhận việc`)', 400);
+                function canhbaosai() {
+                    alert(` Sai rồi,  Hãy làm đơn ${active} cho trường hợp này\n Nhấn vào nút ${active} để xem hướng dẫn chi tiết khi tạo đơn `);
+
+                }}
+
+
+
+
+            
+        }
+        
 
 
         var start = document.getElementById("start");
@@ -581,6 +607,17 @@
             var TH_item = document.querySelector(".TH");
             TH[10].style.display = "block";
             TH[10].classList.add("THdisplay");
+            solution.style.display = "block";
+
+
+        }
+        function myFunction11() {
+            TH.forEach(function(item) {
+                item.style.display = "none";
+            });
+            var TH_item = document.querySelector(".TH");
+            TH[11].style.display = "block";
+            TH[11].classList.add("THdisplay");
             solution.style.display = "block";
 
 
