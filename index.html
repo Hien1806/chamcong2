@@ -119,7 +119,7 @@
             <div class="TH "> <button class="le" onclick="myFunction7()">Ngày đầu tiên nhận việc</button></div>
             <div class="TH "> <button class="chan" onclick="myFunction8()">Vừa đi muộn + về sớm trong 1 ngày</button></div>
             <div class="TH "> <button class="le" onclick="myFunction9()">Vừa đi muộn + quên check out trong 1 ngày</button></div>
-             <div class="TH "> <button class="chan" onclick="myFunction10()">Phân công công việc ban HR</button></div>
+             <div class="TH "> <button class="chan" onclick="myFunction10()">Muốn biết Phân công công việc ban HR</button></div>
         </div>
 
         <div id="solution">
@@ -443,7 +443,7 @@
         var button10 = document.getElementById("btn_pcns");
         button10.onclick = function() {
             var active = document.querySelector("div.THdisplay").textContent;
-             if (active === ' Phân công công việc ban HR') {
+             if (active === ' Muốn biết Phân công công việc ban HR') {
                 audio1.play();
                 document.getElementById("btn_pcns").style.backgroundColor = "#43e8e4";
                 img1.innerHTML = '<h5 style = "color: blue;"> <i style = "color : #F7444E;" class="fas fa-smile fa-spin"></i> Đúng rồi, xem phân công công việc dưới đây để liên hệ đúng nhân sự phụ trách nhé</h1> <img src="./anh phan cong cong viec.png"> ';
